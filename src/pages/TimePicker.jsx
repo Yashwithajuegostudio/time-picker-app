@@ -8,7 +8,7 @@ const TimePickerContainer = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 0.1rem solid black;
+  border: 0.1rem solid var(--primary-black);
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -26,7 +26,7 @@ const TimePickerHeader = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 0.1rem solid black;
+  border: 0.1rem solid var(--primary-black);
   padding: 1rem;
 `;
 function TimePicker() {

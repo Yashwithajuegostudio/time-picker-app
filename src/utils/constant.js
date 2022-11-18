@@ -17,3 +17,7 @@ export const TITLE = {
   hourTitle: "HH",
   minuteTitle: "MM",
 };
+export const COLOR = {
+  primaryRed: "red",
+  primaryGrey: "grey",
+};

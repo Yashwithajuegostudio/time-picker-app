@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+:root {
+  /* Primary colors */
+  --primary-red: red;
+  --primary-grey: grey;
+  --primary-black: black;
+}
