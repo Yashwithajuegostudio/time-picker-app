@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Button from "../components/Button/Button";
-import { HOUR_VALUES, TITLE } from "../utils/constant";
+import { HOUR_VALUES, MINUTE_VALUES, TITLE } from "../utils/constant";
 
 const TimePickerContainer = styled.div`
   position: absolute;
@@ -30,25 +30,54 @@ const TimePickerHeader = styled.div`
   padding: 1rem;
 `;
 function TimePicker() {
+  const [hourValue, setHourValue] = useState("");
+  const [minuteValue, setMinuteValue] = useState("");
+  const [timeFieldStatus, setTimeFieldStatus] = useState(TITLE.minuteTitle);
+
+  const handleNumberClick = (value, btnStatus) => {
+    btnStatus === TITLE.hourTitle ? setHourValue(value) : setMinuteValue(value);
+    btnStatus === TITLE.hourTitle
+      ? setTimeFieldStatus(btnStatus)
+      : setTimeFieldStatus(btnStatus);
+  };
   return (
     <TimePickerContainer>
       <TimePickerHeader>
-        <Button title={TITLE.hourTitle} />
-        <Button title={TITLE.minuteTitle} />
+        <Button
+          title={hourValue === "" ? TITLE.hourTitle : hourValue}
+          active={timeFieldStatus === TITLE.minuteTitle ? true : false}
+        />
+        <Button
+          title={minuteValue === "" ? TITLE.minuteTitle : minuteValue}
+          active={timeFieldStatus === TITLE.minuteTitle ? false : true}
+        />
       </TimePickerHeader>
 
       <TimePickerBox>
-        {HOUR_VALUES.flat().map((btn, index) => {
-          return (
-            <Button
-              key={index}
-              title={btn}
-              clickHandler={() => {
-                console.log(`${btn} clicked!`);
-              }}
-            />
-          );
-        })}
+        {timeFieldStatus === TITLE.minuteTitle &&
+          HOUR_VALUES.flat().map((btn, index) => {
+            return (
+              <Button
+                key={index}
+                title={btn}
+                clickHandler={() => {
+                  handleNumberClick(btn, TITLE.hourTitle);
+                }}
+              />
+            );
+          })}
+        {timeFieldStatus === TITLE.hourTitle &&
+          MINUTE_VALUES.flat().map((btn, index) => {
+            return (
+              <Button
+                key={index}
+                title={btn}
+                clickHandler={() => {
+                  handleNumberClick(btn, TITLE.minuteTitle);
+                }}
+              />
+            );
+          })}
       </TimePickerBox>
     </TimePickerContainer>
   );
