@@ -1,7 +1,8 @@
 import "./App.css";
+import TimePicker from "./pages/TimePicker";
 
 function App() {
-  return <div className="App"></div>;
+  return <TimePicker />;
 }
 
 export default App;
