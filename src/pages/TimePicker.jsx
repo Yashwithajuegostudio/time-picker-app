@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "../components/Button/Button";
 import { HOUR_VALUES, MINUTE_VALUES, TITLE } from "../utils/constant";
@@ -20,7 +20,7 @@ const TimePickerBox = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(4, 1fr);
-  grid-gap: 10px;
+  grid-gap: 0.9rem;
 `;
 const TimePickerHeader = styled.div`
   display: flex;
@@ -34,8 +34,10 @@ function TimePicker() {
   const [minuteValue, setMinuteValue] = useState("");
   const [timeFieldStatus, setTimeFieldStatus] = useState(TITLE.minuteTitle);
 
-  const handleNumberClick = (value, btnStatus) => {
-    btnStatus === TITLE.hourTitle ? setHourValue(value) : setMinuteValue(value);
+  const handleNumberClick = (timeValue, btnStatus) => {
+    btnStatus === TITLE.hourTitle
+      ? setHourValue(timeValue)
+      : setMinuteValue(timeValue);
     btnStatus === TITLE.hourTitle
       ? setTimeFieldStatus(btnStatus)
       : setTimeFieldStatus(btnStatus);
@@ -55,25 +57,25 @@ function TimePicker() {
 
       <TimePickerBox>
         {timeFieldStatus === TITLE.minuteTitle &&
-          HOUR_VALUES.flat().map((btn, index) => {
+          HOUR_VALUES.flat().map((timeValue, index) => {
             return (
               <Button
                 key={index}
-                title={btn}
+                title={timeValue}
                 clickHandler={() => {
-                  handleNumberClick(btn, TITLE.hourTitle);
+                  handleNumberClick(timeValue, TITLE.hourTitle);
                 }}
               />
             );
           })}
         {timeFieldStatus === TITLE.hourTitle &&
-          MINUTE_VALUES.flat().map((btn, index) => {
+          MINUTE_VALUES.flat().map((timeValue, index) => {
             return (
               <Button
                 key={index}
-                title={btn}
+                title={timeValue}
                 clickHandler={() => {
-                  handleNumberClick(btn, TITLE.minuteTitle);
+                  handleNumberClick(timeValue, TITLE.minuteTitle);
                 }}
               />
             );
