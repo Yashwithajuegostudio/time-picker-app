@@ -38,10 +38,9 @@ function TimePicker() {
     btnStatus === TITLE.hourTitle
       ? setHourValue(timeValue)
       : setMinuteValue(timeValue);
-    btnStatus === TITLE.hourTitle
-      ? setTimeFieldStatus(btnStatus)
-      : setTimeFieldStatus(btnStatus);
+    setTimeFieldStatus(btnStatus);
   };
+
   return (
     <TimePickerContainer>
       <TimePickerHeader>
