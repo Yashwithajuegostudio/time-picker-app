@@ -13,11 +13,20 @@ export const MINUTE_VALUES = [
   ["45", "50", "55"],
 ];
 
+// TITLE
 export const TITLE = {
   hourTitle: "HH",
   minuteTitle: "MM",
 };
+
+// COLORS
 export const COLOR = {
   primaryRed: "red",
   primaryGrey: "grey",
+};
+
+// Active Status
+export const ACTIVE_STATUS = {
+  trueStatus: true,
+  falseStatus: false,
 };
