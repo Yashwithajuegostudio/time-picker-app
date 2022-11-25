@@ -41,7 +41,7 @@ function TimePicker({
 
       <TimePickerBox>
         {timeFieldStatus === TITLE.minuteTitle &&
-          HOUR_VALUES.flat().map((timeValue, index) => {
+          HOUR_VALUES.map((timeValue, index) => {
             return (
               <Button
                 key={index}
@@ -53,7 +53,7 @@ function TimePicker({
             );
           })}
         {timeFieldStatus === TITLE.hourTitle &&
-          MINUTE_VALUES.flat().map((timeValue, index) => {
+          MINUTE_VALUES.map((timeValue, index) => {
             return (
               <Button
                 key={index}
